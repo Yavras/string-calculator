@@ -1,18 +1,17 @@
 package calculator;
 
 
-public class StringCalculator
-{
-     public static int add(String text)
-     {
+public class StringCalculator {
+
+     public static int add(String text) {
+
          String regex = "(.)[,](.)|(.)\\n(.*)";
          boolean valid = text.matches(regex);
-         if (text.isEmpty())
-         {
+
+        if(text.isEmpty()) {
              return 0;
-         }
-         else if (valid)
-         {
+         } else if(valid) {
+
              String[] parts = text.split(",|\\n");
              int sum=0;
              for (String part : parts)
@@ -20,9 +19,8 @@ public class StringCalculator
                  sum = sum + Integer.parseInt(part);
              }
              return sum;
-         }
-         else
-         {
+
+         } else {
              return Integer.parseInt(text);
          }
      }

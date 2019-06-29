@@ -42,4 +42,11 @@ class StringCalculatorTest
         assertEquals(11, StringCalculator.add("3\n6,2"));
     }
 
+    // fourth test point
+    @Test
+    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimeter()
+    {
+        assertEquals(15, StringCalculator.add("\\;\n6;9"));
+    }
+
 }
