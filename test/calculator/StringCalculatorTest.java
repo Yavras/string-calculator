@@ -34,6 +34,12 @@ class StringCalculatorTest
         assertEquals(22, StringCalculator.add("3,7,11,1"));
     }
 
+    // third test point
 
+    @Test
+    public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine()
+    {
+        assertEquals(9, StringCalculator.add("3\n5,1"));
+    }
 
 }
