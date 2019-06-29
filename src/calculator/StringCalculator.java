@@ -11,7 +11,12 @@ public class StringCalculator
          else if (text.contains(","))
          {
              String[] parts = text.split(",");
-             return Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]);
+             int sum=0;
+             for (String part : parts)
+             {
+                 sum = sum + Integer.parseInt(part);
+             }
+             return sum;
          }
          else
          {
