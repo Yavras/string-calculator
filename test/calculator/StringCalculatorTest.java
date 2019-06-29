@@ -31,7 +31,7 @@ class StringCalculatorTest
     @Test
     public void methodShouldReturnSumOfAnyAmountNumbers()
     {
-        assertEquals(22, StringCalculator.add("3,7,11,1"));
+        assertEquals(22, StringCalculator.add("3\n7,11,1"));
     }
 
     // third test point
@@ -39,7 +39,7 @@ class StringCalculatorTest
     @Test
     public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine()
     {
-        assertEquals(9, StringCalculator.add("3\n5,1"));
+        assertEquals(11, StringCalculator.add("3\n6,2"));
     }
 
 }
