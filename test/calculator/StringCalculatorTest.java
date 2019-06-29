@@ -25,4 +25,15 @@ class StringCalculatorTest
     {
         assertEquals(10, StringCalculator.add("3,7"));
     }
+
+    // second test point
+
+    @Test
+    public void methodShouldReturnSumOfAnyAmountNumbers()
+    {
+        assertEquals(22, StringCalculator.add("3,7,11,1"));
+    }
+
+
+
 }

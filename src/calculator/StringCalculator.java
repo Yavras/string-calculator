@@ -10,8 +10,8 @@ public class StringCalculator
          }
          else if (text.contains(","))
          {
-             String[] patrts = text.split(",");
-             return Integer.parseInt(patrts[0]) + Integer.parseInt(patrts[1]);
+             String[] parts = text.split(",");
+             return Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]);
          }
          else
          {
