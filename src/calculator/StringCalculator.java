@@ -1,6 +1,8 @@
 package calculator;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,14 +13,18 @@ public class StringCalculator {
 
     public static final String commaAndNewLineRegex = "(.)[,](.)|(.)\\n(.*)";
     public static final Pattern differentDelimiterPattern = Pattern.compile("//(.*)\n(.*)");
+    public static final Pattern negativesRegex = Pattern.compile("(-[0-9]+)");
 
-    public static int add(String text) {
+    public static int add(String text) throws Exception {
         boolean valid = text.matches(commaAndNewLineRegex);
-
+        Matcher negatives = negativesRegex.matcher(text);
+        boolean negativeCondition = negatives.find();
+        if(negativeCondition) {
+            throw new Exception("negatives not allowed");
+        }
         if(text.isEmpty()){
             return 0;
-        } else if(valid) {
-
+        }  else if(valid) {
              String[] parts = text.split(",|\\n");
              int sum=0;
              for (String part : parts)
@@ -38,7 +44,7 @@ public class StringCalculator {
             }else {
                 throw new IllegalArgumentException();
             }
-            final String[] ints = numbers.split((delimiterRegex));
+            final String[] ints = numbers.split((Pattern.quote(delimiterRegex)));
             return stream(ints)
                     .mapToInt(Integer::parseInt)
                     .sum();
@@ -46,41 +52,7 @@ public class StringCalculator {
         else {
             return Integer.parseInt(text);
         }
-     }
+
+        }
 
 }
-
-
-//String differentDelimiterRegex = "^(.*)\\n";
-// String differentDelimiterRegex = ";";
-
-        /* if(text.startsWith("//"))
-         {
-             text=text.substring(2);
-
-             String differentDelimiterRegex = "(.*)\n";
-             boolean valid2 = text.matches(differentDelimiterRegex);
-             int sum2=0;
-             valid2=true;
-             if (valid2)
-             {
-                 String[] part2 = text.split(";|\n");
-                 for (String parts: part2)
-                 {
-                     sum2 = sum2 + Integer.parseInt(parts);
-                 }
-             }
-             return sum2;
-         }*/
-
-
-
-/*
-        if(text.startsWith("//")){
-        text=text.substring(2);
-        String[] tokens = text.split(differentDelimiterRegex);
-        System.out.println("zadany string: "+text);
-        for (String token:tokens) {
-        System.out.println(token);
-        }
-        return 0;*/

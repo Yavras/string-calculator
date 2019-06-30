@@ -1,27 +1,28 @@
 package calculator;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringCalculatorTest
+public class StringCalculatorTest
 {
     // first test point
 
     @Test
-    public void methodShouldReturnZeroOnEmptyString()
+    public void methodShouldReturnZeroOnEmptyString() throws Exception
     {
         assertEquals(0, StringCalculator.add(""));
     }
 
     @Test
-    public void methodShouldReturnItself()
+    public void methodShouldReturnItself() throws Exception
     {
-        assertEquals(8, StringCalculator.add("8"));
+        assertEquals(7, StringCalculator.add("-7"));
     }
 
     @Test
-    public void methodShouldReturnSumOfTwoNumbers()
+    public void methodShouldReturnSumOfTwoNumbers() throws Exception
     {
         assertEquals(10, StringCalculator.add("3,7"));
     }
@@ -29,7 +30,7 @@ class StringCalculatorTest
     // second test point
 
     @Test
-    public void methodShouldReturnSumOfAnyAmountNumbers()
+    public void methodShouldReturnSumOfAnyAmountNumbers() throws Exception
     {
         assertEquals(22, StringCalculator.add("3\n7,11,1"));
     }
@@ -37,22 +38,49 @@ class StringCalculatorTest
     // third test point
 
     @Test
-    public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine()
+    public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine() throws Exception
     {
         assertEquals(11, StringCalculator.add("3\n6,2"));
     }
 
     // fourth test point
     @Test
-    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimiter_v1()
+    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimiter_v1() throws Exception
     {
         assertEquals(25, StringCalculator.add("//@@\n6@@9@@8@@2"));
     }
 
     @Test
-    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimiter_v2()
+    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimiter_v2() throws Exception
     {
         assertEquals(25, StringCalculator.add("//;\n6;9;8;2"));
     }
+
+    @Test
+    public void methodShouldReturnSumOfNumbersSplittedByDifferentDelimiterSpecialCharacter() throws Exception
+    {
+        assertEquals(18, StringCalculator.add("//.\n5.11.2"));
+    }
+
+    // fifth test point
+
+    @Test
+    public void methodShouldReturnExceptionOnNegatives_v1()
+    {
+       assertThrows(Exception.class,
+               ()->{
+           StringCalculator.add("-1");
+
+               });
+    }
+
+    @Test
+    public void unhandledMethodShouldFailOnNegatives() throws Exception
+    {
+        assertEquals(18, StringCalculator.add("5; 1 -3"));
+    }
+
+
+
 
 }
