@@ -19,8 +19,9 @@ public class StringCalculator {
     public static int add(String text) throws Exception {
         boolean valid = text.matches(commaAndNewLineRegex);
         Matcher negatives = negativesRegex.matcher(text);
-        boolean negativeCondition = !negatives.hitEnd();
+        boolean negativeCondition = negatives.find();
         if(negativeCondition) {
+            negatives.reset();
             List<String> allMatches = new ArrayList<String>();
             while (negatives.find())
             {
@@ -31,15 +32,15 @@ public class StringCalculator {
         if(text.isEmpty()){
             return 0;
         }  else if(valid) {
-             String[] parts = text.split(",|\\n");
-             int sum=0;
-             for (String part : parts)
-             {
-                 sum = sum + Integer.parseInt(part);
-             }
-             return sum;
+            String[] parts = text.split(",|\\n");
+            int sum=0;
+            for (String part : parts)
+            {
+                sum = sum + Integer.parseInt(part);
+            }
+            return sum;
 
-         } else if(text.startsWith("//")) {
+        } else if(text.startsWith("//")) {
             String delimiterRegex, numbers;
             final Matcher matcher = differentDelimiterPattern.matcher(text);
             if(matcher.find()){
@@ -53,11 +54,11 @@ public class StringCalculator {
             return stream(ints)
                     .mapToInt(Integer::parseInt)
                     .sum();
-         }
+        }
         else {
             return Integer.parseInt(text);
         }
 
-        }
+    }
 
 }
