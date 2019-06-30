@@ -90,9 +90,16 @@ public class StringCalculatorTest
 
     // sixth test point
     @Test
-    public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine22() throws Exception
+    public void methodShouldReturnSkipValueGreaterThan1000() throws Exception
     {
         assertEquals(3, StringCalculator.add("1005,3"));
+    }
+
+    // seventh test point
+    @Test
+    public void methodShouldReturnSumOfSumbersSplittedByDelimeterInSquareBrackets() throws Exception
+    {
+        assertEquals(17, StringCalculator.add("//[***]\n5***8***4"));
     }
 
 }
