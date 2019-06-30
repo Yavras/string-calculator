@@ -15,11 +15,12 @@ public class StringCalculator {
     public static final String commaAndNewLineRegex = "(.)[,](.)|(.)\\n(.*)";
     public static final Pattern differentDelimiterPattern = Pattern.compile("//(.*)\n(.*)");
     public static final Pattern negativesRegex = Pattern.compile("(-[0-9]+)");
-
     public static int add(String text) throws Exception {
         boolean valid = text.matches(commaAndNewLineRegex);
         Matcher negatives = negativesRegex.matcher(text);
         boolean negativeCondition = negatives.find();
+        System.out.println(text);
+        System.out.println(text);
         if(negativeCondition) {
             negatives.reset();
             List<String> allMatches = new ArrayList<String>();

@@ -88,4 +88,10 @@ public class StringCalculatorTest
         assertEquals("negatives not allowed: [-2]", e.getMessage());
     }
 
+    @Test
+    public void methodShouldReturnSumOfNumbersSplittedByComaOrNewLine22() throws Exception
+    {
+        assertEquals(3, StringCalculator.add("1005,3"));
+    }
+
 }
