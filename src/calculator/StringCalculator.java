@@ -15,7 +15,8 @@ public class StringCalculator {
     public static final String commaAndNewLineRegex = "(.)[,](.)|(.)\\n(.*)";
     public static final Pattern differentDelimiterPattern = Pattern.compile("//(.*)\n(.*)");
     public static final Pattern negativesRegex = Pattern.compile("(-[0-9]+)");
-    public static final String findBigNumbersRegex = "[1-9]\\d{3,}";
+    public static final String findBigNumbersRegex = "(100[1-9]|10[1-9][0-9]|1[1-9][0-9]{2,})";
+
     public static int add(String text) throws Exception {
         text=text.replaceAll(findBigNumbersRegex,"0");
         boolean valid = text.matches(commaAndNewLineRegex);
