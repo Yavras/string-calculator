@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.MatchResult;
 
 import static java.util.Arrays.stream;
 
@@ -18,9 +19,14 @@ public class StringCalculator {
     public static int add(String text) throws Exception {
         boolean valid = text.matches(commaAndNewLineRegex);
         Matcher negatives = negativesRegex.matcher(text);
-        boolean negativeCondition = negatives.find();
+        boolean negativeCondition = !negatives.hitEnd();
         if(negativeCondition) {
-            throw new Exception("negatives not allowed");
+            List<String> allMatches = new ArrayList<String>();
+            while (negatives.find())
+            {
+                allMatches.add(negatives.group());
+            }
+            throw new Exception("negatives not allowed: " + allMatches.toString());
         }
         if(text.isEmpty()){
             return 0;
@@ -39,7 +45,6 @@ public class StringCalculator {
             if(matcher.find()){
                 delimiterRegex = matcher.group(1);
                 numbers = matcher.group(2);
-                System.out.println(numbers);
 
             }else {
                 throw new IllegalArgumentException();

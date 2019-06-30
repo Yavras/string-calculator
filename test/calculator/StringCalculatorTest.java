@@ -67,19 +67,26 @@ public class StringCalculatorTest
     @Test
     public void methodShouldReturnExceptionOnNegatives_v1()
     {
-       assertThrows(Exception.class,
+       Exception e = assertThrows(Exception.class,
                ()->{
            StringCalculator.add("-1,4,-7");
 
                });
+
+       assertEquals("negatives not allowed: [-1, -7]", e.getMessage());
     }
 
     @Test
-    public void unhandledMethodShouldFailOnNegatives() throws Exception
+    public void methodShouldReturnExceptionOnNegatives_v2()
     {
-        assertEquals(18, StringCalculator.add("5, 1,-3"));
-    }
+        Exception e = assertThrows(Exception.class,
+                ()->{
+                    StringCalculator.add("//.\n5.11.-2.2");
 
+                });
+
+        assertEquals("negatives not allowed: [-2]", e.getMessage());
+    }
 
 
 
