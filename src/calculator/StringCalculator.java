@@ -19,8 +19,6 @@ public class StringCalculator {
         boolean valid = text.matches(commaAndNewLineRegex);
         Matcher negatives = negativesRegex.matcher(text);
         boolean negativeCondition = negatives.find();
-        System.out.println(text);
-        System.out.println(text);
         if(negativeCondition) {
             negatives.reset();
             List<String> allMatches = new ArrayList<String>();
