@@ -18,7 +18,7 @@ public class StringCalculatorTest
     @Test
     public void methodShouldReturnItself() throws Exception
     {
-        assertEquals(7, StringCalculator.add("-7"));
+        assertEquals(7, StringCalculator.add("7"));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class StringCalculatorTest
     {
        assertThrows(Exception.class,
                ()->{
-           StringCalculator.add("-1");
+           StringCalculator.add("-1,4,-7");
 
                });
     }
@@ -77,7 +77,7 @@ public class StringCalculatorTest
     @Test
     public void unhandledMethodShouldFailOnNegatives() throws Exception
     {
-        assertEquals(18, StringCalculator.add("5; 1 -3"));
+        assertEquals(18, StringCalculator.add("5, 1,-3"));
     }
 
 
